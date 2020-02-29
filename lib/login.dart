@@ -81,7 +81,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
 
                       if(result != null){
-                        Navigator.push(
+
+                        // pushReplacement
+
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => DashboardScreen()),
                         );
