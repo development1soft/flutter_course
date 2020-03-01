@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_with_firebase/dashboard.dart';
-import 'package:flutter_with_firebase/register.dart';
-class LoginScreen extends StatefulWidget{
+import 'package:flutter_with_firebase/login.dart';
+
+
+class RegisterScreen extends StatefulWidget{
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-
-  void initState()
+class _RegisterScreenState extends State<RegisterScreen> {
+    void initState()
   {
     super.initState();
   }
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login To My Account'),
+        title: Text('Register New Account'),
       ),
       body: Container(
         padding: EdgeInsets.all(16),
@@ -74,41 +74,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 RaisedButton(
                   color: Colors.blue,
-                  child: Text('Login',style: TextStyle(color: Colors.white),),
-                  onPressed: () async {
+                  child: Text('Register New Account',style: TextStyle(color: Colors.white),),
+                  onPressed: () async{
                     if(_formkey.currentState.validate()){
-
-                      var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
-
-                      if(result != null){
-
-                        // pushReplacement
-
+                      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
+                    
+                      if(result != null)
+                      {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => DashboardScreen()),
+                          MaterialPageRoute(builder: (context) => LoginScreen()),
                         );
                       }else{
-                        print('user not found');
+                        print('please try later');
                       }
                     }
                   },
-                ),
-                RaisedButton(
-                  color: Colors.blue,
-                  child: Text('Register New Account',style: TextStyle(color: Colors.white),),
-                  onPressed: () async {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen() ) );
-                  },
                 )
-
               ],
             )
         ),
       ),
     );
   }
-
-
 
 }
