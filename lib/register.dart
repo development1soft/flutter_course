@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_with_firebase/login.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterScreen extends StatefulWidget{
   @override
@@ -81,6 +81,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     
                       if(result != null)
                       {
+
+                        var userInfo = Firestore.instance.collection('users').document().setData({
+                          'email':result.email
+                        });
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => LoginScreen()),
