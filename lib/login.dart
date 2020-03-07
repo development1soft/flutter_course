@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_with_firebase/dashboard.dart';
 import 'package:flutter_with_firebase/register.dart';
+import 'package:flutter_with_firebase/register2.dart';
 class LoginScreen extends StatefulWidget{
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -99,6 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text('Register New Account',style: TextStyle(color: Colors.white),),
                   onPressed: () async {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen() ) );
+                  },
+                ),
+                RaisedButton(
+                  color: Colors.blue,
+                  child: Text('Register New Account 2 ',style: TextStyle(color: Colors.white),),
+                  onPressed: () async {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen2() ) );
                   },
                 )
 
