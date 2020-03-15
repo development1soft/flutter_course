@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_with_firebase/add_post.dart';
 import 'package:flutter_with_firebase/login.dart';
 
 
@@ -22,7 +23,15 @@ class DashboardScreen extends StatelessWidget{
         ],
       ),
       body: Container(
-        child: Text('Welcome To Your Dashboard'),
+        child: RaisedButton(
+          
+          child: Text('Add Post'),
+
+          onPressed:(){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddPost()));
+          }
+
+        ),
       ),
     );
   }
