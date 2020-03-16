@@ -1,2 +1,28 @@
+
+// Auth Requirements
+
 firebase_auth: ^0.11.1+7
+
+
+// Firestore Requirements
+
 cloud_firestore:  ^0.12.11
+
+
+
+
+// Notifications Requirements
+
+
+firebase_messaging: 5.1.2
+
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.VIBRATE"/>
+<intent-filter>
+    <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+
+implementation 'com.google.firebase:firebase-analytics:17.2.2'
+implementation 'com.google.firebase:firebase-messaging:20.1.1'

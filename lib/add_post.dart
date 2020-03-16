@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_firebase/login.dart';
 
@@ -10,10 +11,16 @@ class AddPost extends StatefulWidget{
 }
 
 class _AddPostState extends State<AddPost> {
+
+  final FirebaseMessaging _fcm = FirebaseMessaging();
   
   void initState()
   {
     super.initState();
+
+    _fcm.getToken().then((token){
+      print('the token is : ' + token);
+    });
   }
 
   final _formkey = GlobalKey<FormState>();
