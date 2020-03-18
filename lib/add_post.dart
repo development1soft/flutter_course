@@ -18,9 +18,12 @@ class _AddPostState extends State<AddPost> {
   {
     super.initState();
 
+    updatePost("p3vjZpKzHL8mybS4aYoB");    
+
     _fcm.getToken().then((token){
       print('the token is : ' + token);
     });
+
   }
 
   final _formkey = GlobalKey<FormState>();
@@ -37,6 +40,15 @@ class _AddPostState extends State<AddPost> {
     _post_descripition.dispose();
 
     super.dispose();
+  }
+
+  updatePost(String ID){
+    Firestore.instance.collection('posts').document(ID).setData({
+      'title':"Title Edited",
+      'description':"Description Edited"
+    }).then((value){
+      print('record updated successflly');
+    });
   }
 
   @override
@@ -134,5 +146,7 @@ class _AddPostState extends State<AddPost> {
       ),
     );
   }
+
+  
 }
 

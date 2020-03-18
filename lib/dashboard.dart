@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_firebase/add_post.dart';
 import 'package:flutter_with_firebase/login.dart';
+import 'package:flutter_with_firebase/posts.dart';
 
 
 class DashboardScreen extends StatelessWidget{
@@ -23,14 +24,25 @@ class DashboardScreen extends StatelessWidget{
         ],
       ),
       body: Container(
-        child: RaisedButton(
-          
-          child: Text('Add Post'),
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+              child: Text('Add Post'),
 
-          onPressed:(){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddPost()));
-          }
+              onPressed:(){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddPost()));
+              }
 
+            ),
+            RaisedButton(
+              child: Text('See All Posts'),
+
+              onPressed:(){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PostsScreen()));
+              }
+
+            ),
+          ],
         ),
       ),
     );
