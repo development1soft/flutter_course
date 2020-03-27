@@ -21,7 +21,9 @@ class _AddPostState extends State<AddPost> {
     updatePost("p3vjZpKzHL8mybS4aYoB");    
 
     _fcm.getToken().then((token){
-      print('the token is : ' + token);
+      Firestore.instance.collection('tokens').add({
+        'token':token
+      });
     });
 
   }
